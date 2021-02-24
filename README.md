@@ -1,4 +1,4 @@
-# Getting started on EC2
+# Getting started on AWS with EC2
 
 ## Introduction
 
