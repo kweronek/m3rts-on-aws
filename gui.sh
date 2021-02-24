@@ -1,10 +1,12 @@
 #!/usr/bin/env sh
 
 #VNCPASSWD=
-
-
 apt update
 apt upgrade -y
+apt install -y make
+apt install -y build-essential
+sudo snap install tree
+sudo snap install htop
 
 # Set timezone
 timedatectl set-timezone Europe/Berlin
@@ -39,10 +41,25 @@ fi
 # Install systemd unit for vnc server daemon
 install --owner=root --group=root --mode=644 ./vncserver.service /etc/systemd/system/vncserver.service
 
-
 # Reload unit files
 systemctl daemon-reload
 # Start vnc server on future system startups
 systemctl enable vncserver.service
 # Start vnc server now
 systemctl start vncserver.service
+
+# Zoom-Client
+cd ~/Downloads
+wget https://zoom.us/client/latest/zoom_amd64.deb
+sudo apt install ./zoom_amd64.deb
+cd ~
+
+# install Chrome
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+
+# ensure that arrows work in vi
+echo "set nocompatible" > $HOME/.vimrc
+# add . to PATH
+echo "export PATH=$PATH:." >> $HOME/.profile
+source $HOME/.profile
