@@ -48,6 +48,9 @@ systemctl enable vncserver.service
 # Start vnc server now
 systemctl start vncserver.service
 
+# install Libre-Office 7
+sudo snap install libreoffice 
+
 # Zoom-Client
 cd ~/Downloads
 wget https://zoom.us/client/latest/zoom_amd64.deb
@@ -55,8 +58,10 @@ sudo apt install ./zoom_amd64.deb
 cd ~
 
 # install Chrome
+cd ~/Downloads
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
+cd ~
 
 # ensure that arrows work in vi
 echo "set nocompatible" > $HOME/.vimrc
