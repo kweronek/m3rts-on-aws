@@ -98,8 +98,7 @@ We have prepared scripts to install the software required for this course in thi
 
 You should now:
 - Connect to your VM using SSH
-- Run `git clone https://github.com/kweronek/ubuntu-install.git`
-- Change directory with `cd ubuntu-install`
+- Run `git clone https://github.com/kweronek/m3rts-on-aws.git`
 - Run `chmod +x gui.sh`
 - Run `sudo tmux new ./gui.sh`
 - If you loose connection while the script is running reconnect and run `sudo tmux attach`
