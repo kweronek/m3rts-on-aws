@@ -1,0 +1,16 @@
+[Unit]
+Description=Virtual Network Computing Server (VNC)
+After=syslog.target network.target
+
+[Service]
+Type=simple
+Environment="HOME=/home/ubuntu"
+ExecStartPre=/usr/bin/vncserver -kill :1 > /dev/null 2>&1 || :
+ExecStart=vncserver -fg :1 -localhost no
+ExecStop=/usr/bin/vncserver -kill :1
+Restart=always
+RestartSec=3s
+User=ubuntu
+
+[Install]
+WantedBy=multi-user.target
