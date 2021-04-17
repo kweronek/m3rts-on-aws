@@ -607,3 +607,4 @@ Mit einem Rebase ist es möglich einen Entwicklungszweig von einem Ausgangscommi
 ## 6.8. Merge/Pull Requests
 
 Merge bzw. Pull Requests sind ein Feature diverser Git-Hoster, dass nicht Teil von Git selbst ist. Dabei wird der Maintainer einer Software aufgefordert Commits aus einem fremden Repository durch einen Mergevorgang in sein Repository einzupflegen. Dies ermöglicht es Code zu einem Repository beizutragen, auf das der Urheber der Anfrage selber keinen Schreibzugriff hat, bzw. Beiträge von Fremden anzunehmen, ohne auf Zusenden von Patches per E-Mail o.ä. zurückgreifen zu müssen. Nähere Information können Sie der Dokumentation des jeweiligen Anbieters entnehmen: [GitLab](https://docs.gitlab.com/ee/user/project/merge_requests/getting_started.html) bzw. [GitHub](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/proposing-changes-to-your-work-with-pull-requests).
+
