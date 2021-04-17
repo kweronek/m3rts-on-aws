@@ -74,7 +74,7 @@ You should now:
 - Log into AWS Educate and go to the EC2 dashboard
 - Click on the orange button `Launch instance`
 - Step 1: Select the 64-bit x86 build of `Ubuntu Server 20.04 LTS (HVM)`
-- Step 2: Select the instance type `c5.large` and click on `Next: Configure Instance Detail`
+- Step 2: Select the instance type `m4.xlarge` and click on `Next: Configure Instance Detail`
 - Step 3: Do not change the defauls and click on `Next: Add Storage`
 - Step 4: Change the `Size (GiB)` from 10 to 20 GB and click on `Next: Add Tags`
 - Step 5: Click on `Add Tag` and Fill in `Name`in the Key field and a name of your new instances in the Value field
