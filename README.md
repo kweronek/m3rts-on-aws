@@ -7,15 +7,22 @@ You should have received an invitation E-Mail for the service already. Click on 
 
 To access EC2, log into [AWS Educate](https://www.awseducate.com/), click on my classrooms and go to the Software Oriented Architecture classroom. This will take you to a third party site called Vocareum that gives you access to the AWS Console. Some popup blockers break this, so you may need to whitelist Vocareum there. On the AWS Console go to all services and click on EC2. Do not attempt to change the data center location. Selecting anything but the default (us-east-1/North Virginia) will appear to work at first but is not supported by AWS Educate and will lead to nothing but unclear error messages later.
 
-You should now:
-- Find your invitation E-Mail
-- Create an AWS Educate account
+## Preconfiguration of you AWS-educate account workspace
+
+To configure your AWS-educate account workspace proceed as follows:
+
+- Open your invitation E-Mail from AWS-educate
+- Create an AWS Educate account by following the instruction in the mail
 - Proceed with the local part of the OpenSSH section while waiting for confirmation
 - Log in to [AWS Educate](https://www.awseducate.com/signin/SiteLogin)
 - Go to `My Classrooms`
-- On the SOA course, select `Go to Classroom` and click continue
+- On the `Real-Time-Systems-SumSem21` course, select `Go to Classroom` and click continue
+- You can now see your remaining credits and the reamaining time for this session
+  (after the session has expired you can start a new one by a re-login)
 - Click on `ÀWS Console`
 - Under `Services` go to `EC2` to reach the EC2 dashboard
+
+
 
 
 ## OpenSSH
@@ -42,7 +49,6 @@ You should now:
 - Go to  `Network and Security > Key Pairs`
 - Import your public key by clicking on `Actions > Import key pair`
 
-
 ## EC2 Instances
 
 Now that you have a public key uploaded you can create a new EC2 instance. In the EC2 Dashboard go to `Instances` and select `Start Instances`. You are presented a list of Amazon Machine Images (AMIs) that contain different base systems. For this course the only supported base image is `Ubuntu Server 20.04 LTS` for 64-bit x86 processors. After selecting it you will be presented a (long) list of hardware configurations. For command line only access a t2.micro can be used but won't be able to handle any significant load or graphical user interfaces. For these loads usage of a c5.large is recommended. In the following steps you can configure further settings. For the purpose of this course the default settings are fine. For your own sanity you should name your instance by adding a tag with the key `Name`, so that you can tell your instances apart later. When launching your instance you will be prompted to select an ssh key. You should pick the key you previously uploaded here.
@@ -53,12 +59,37 @@ Another important point is that EC2 instances are run behind a firewall. It's co
 
 You should now:
 - Log into AWS Educate and go to the EC2 dashboard
-- Go to the instance videw and select `Start Instance/Instanz starten` in the top right
-- Select the 64-bit x86 build of `Ubuntu Server 20.04 LTS`
-- Select the instance type `c5.large`
-- Proceed to step 5 and select `click to add a Name tag` to name your instances
-- Launch the instance and select the public key you uploaded earlier in the prompt
-- You will be directed to a page called `Launch Status` telling you that your instance is launching. Click on the instance ID to show the instance in the instance view of the EC2 dashboard. Click on the ID again to go to the instance details
+- Click on the orange button `Launch instance`
+- Step 1: Select the 64-bit x86 build of `Ubuntu Server 20.04 LTS (HVM)`
+- Step 2: Select the instance type `c5.large` and click on `Next: Configure Instance Detail`
+- Step 3: Do not change the defauls and click on `Next: Add Storage`
+- Step 4: Change the `Size (GiB)` from 10 to 20 GB and click on `Next: Add Tags`
+- Step 5: Click on `Add Tag` and Fill in `Name`in the Key field and a name of your new instances in the Value field
+          and click on `Next: Configure Security Group`
+- Step 6: Click on Add Rule
+          Select `http` for the Type field using the pull down menu
+          Click on Add Rule
+          Select `https` for the Type field using the pull down menu
+          Click on Add Rule
+          Type in `5901` in the field Port
+          Select `Anywhere` for the Source field using the pull down menu
+          Click on `Review and Launch`
+- Step 7: Review your configuration. Ignore the warnings regarding security groups and free usage tier
+          Click on `Launch`
+- Step 7 (if you do not have a key pair:)
+          In the popup window select `Create a new key pair`. Type in a name for your key-pair.
+          Click on `Downlaod Key Pair`
+          Click on `Launch instance`
+- Step 7 (if you have already a key pair created and/or uploaded to your AWS-workspace)       
+          In the popup window select `Use existeing key pair`
+          Select your key pair
+          Click on `Launch instance`
+
+- You will be directed to a page called `Launch Status` telling you that your instance is launching.
+  Click on View Instances
+- Click on the instance ID to show the instance in the instance view of the EC2 dashboard. 
+  Click on the ID again to go to the instance details
+  
 - Make yourself familiar with the `Instance Status` menu in the top right. You can stop (not terminate) and restart your instance for testing if you want
 - Obtain the instances public IP address or DNS entry from the top middle of the view
 - Click on the security tab to find the security group (firewall) configuration
@@ -99,11 +130,12 @@ We have prepared scripts to install the software required for this course in thi
 You should now:
 - Connect to your VM using SSH
 - Run `git clone https://github.com/kweronek/m3rts-on-aws.git`
+- Run `cd m3rts-on-aws.git`
 - Run `chmod +x gui.sh`
 - Run `sudo tmux new ./gui.sh`
 - If you loose connection while the script is running reconnect and run `sudo tmux attach`
 - Wait for the script to complete. It will take a while because it installs a lot of software
-- Set up a graphical connection using either VNC or RDP
+- Set up a graphical connection using either VNC or RDP (VNC is recommended)
 
 
 ### Connecting to your instance using VNC
@@ -115,8 +147,8 @@ You should now pick a method and connect to your machine:
 
 Using a direct connection
 - Install a VNC client (TigerVNC, Remmina etc.) on your local system.
-- Open port 5901 in the security group of your instance
-- Make sure your instance is up on the dashboard
+- Open port 5901 in the security group of your instance, if not done before
+- Make sure your instance is up on the AWS-dashboard
 - Optionally change your VNC password by running `vncpasswd` over ssh
 - Open your VNC client and connect to <IP or DNS>:5901
 
@@ -128,7 +160,7 @@ Using SSH port forwarding
 - Open your VNC client and connect to localhost:5901. If you had to change your local port, adjust it here as well
 
 
-### Connecting to your instance using RDP
+### Connecting to your instance using RDP (optional!!!)
 Alternatively you can use the Remote Desktop Protocol instead of VNC. Windows ships with a RDP client called mstsc.exe (Microsoft Terminal Services Client), however there is alternate implementations for various platforms like Remmina (FreeRDP) for Linux. The port used by RDP is 3389 and needs to be made accessible like for VNC. Once connected the RDP server will show a login screen where you can log in. For this you will first need to set a password for your `ubuntu` user using `sudo passwd ubuntu` over ssh.
 
 You should now pick a method and connect to your machine:
