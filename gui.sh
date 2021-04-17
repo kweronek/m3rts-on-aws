@@ -68,3 +68,6 @@ echo "set nocompatible" > $HOME/.vimrc
 # add . to PATH
 echo "export PATH=$PATH:." >> $HOME/.profile
 source $HOME/.profile
+
+# to use kate/vnc instead of vi/ssh
+sudo snap install kate
