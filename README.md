@@ -7,7 +7,9 @@ You should have received an invitation E-Mail for the service already. Click on 
 
 To access EC2, log into [AWS Educate](https://www.awseducate.com/), click on my classrooms and go to the Software Oriented Architecture classroom. This will take you to a third party site called Vocareum that gives you access to the AWS Console. Some popup blockers break this, so you may need to whitelist Vocareum there. On the AWS Console go to all services and click on EC2. Do not attempt to change the data center location. Selecting anything but the default (us-east-1/North Virginia) will appear to work at first but is not supported by AWS Educate and will lead to nothing but unclear error messages later.
 
-## Setup your AWS-educate account workspace
+(For a quick start follow the ***)
+
+## Setup your AWS-educate account workspace ***
 
 To configure your AWS-educate account workspace proceed as follows:
 
@@ -21,9 +23,6 @@ To configure your AWS-educate account workspace proceed as follows:
   (after the session has expired you can start a new one by a re-login)
 - Click on `ÀWS Console`
 - Under `Services` go to `EC2` to reach the EC2 dashboard
-
-
-
 
 ## SSH
 
@@ -63,7 +62,7 @@ You should now:
 
 Now you have a public key uploaded to AWS you can create a new EC2 instance. 
 
-## EC2 Instances (mandatory)
+## EC2 Instances (mandatory) ***
 
 In the EC2 Dashboard go to `Instances` and select `Start Instances`. You are presented a list of Amazon Machine Images (AMIs) that contain different base systems. For this course the only supported base image is `Ubuntu Server 20.04 LTS` for 64-bit x86 processors. After selecting it you will be presented a (long) list of hardware configurations. For command line only access a t2.micro can be used but won't be able to handle any significant load or graphical user interfaces. For these loads usage of a c5.large is recommended. In the following steps you can configure further settings. For the purpose of this course the default settings are fine. For your own sanity you should name your instance by adding a tag with the key `Name`, so that you can tell your instances apart later. When launching your instance you will be prompted to select an ssh key. You should pick the key you previously uploaded here.
 
@@ -112,7 +111,7 @@ You should now:
 
 ## Connecting to your instance
 
-### Connecting to your instance using OpenSSH
+### Connecting to your instance using OpenSSH ***
 
 To connect to your VM you must first obtain its public IP address or public DNS name from the instance view on the EC2 dashboard.
 You can then use the command `ssh ubuntu@<IP or DNS>`to connect to your virtual machine. Additional arguments can be supplied before the destination.
