@@ -7,6 +7,8 @@ apt install -y make
 apt install -y build-essential
 sudo snap install tree
 sudo snap install htop
+# to use kate/vnc instead of vi/ssh
+sudo snap install kate
 
 # Set timezone
 timedatectl set-timezone Europe/Berlin
@@ -54,7 +56,7 @@ sudo snap install libreoffice
 # Zoom-Client
 cd ~/Downloads
 wget https://zoom.us/client/latest/zoom_amd64.deb
-sudo apt install ./zoom_amd64.deb
+sudo apt install -y ./zoom_amd64.deb
 cd ~
 
 # install Chrome
@@ -68,6 +70,3 @@ echo "set nocompatible" > $HOME/.vimrc
 # add . to PATH
 echo "export PATH=$PATH:." >> $HOME/.profile
 source $HOME/.profile
-
-# to use kate/vnc instead of vi/ssh
-sudo snap install kate
