@@ -3,11 +3,16 @@
 #VNCPASSWD=
 apt update
 apt upgrade -y
+
+# Install build tools
 apt install -y make
 apt install -y build-essential
+apt install -y gcc
+
+# Install other tools
 sudo snap install tree
 sudo snap install htop
-# to use kate/vnc instead of vi/ssh
+## to use kate/vnc instead of vi/ssh
 sudo snap install kate
 
 # Set timezone
