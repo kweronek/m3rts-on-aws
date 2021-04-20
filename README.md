@@ -131,8 +131,8 @@ For more details about these features please consult the tools individual man pa
 You should now:
 - Open a terminal/command prompt on your local system
 - Obtain the instances public IP address or DNS name or copy the ssh string
-- Run `ssh -i "/path/to/private/key" ubuntu@<IP or DNS>``
-  Example: ssh -i "RTS21-edu3.cer" ubuntu@ec2-100-27-0-67.compute-1.amazonaws.com
+- Run `ssh -i "/path/to/private/key" ubuntu@<IP or DNS>`
+  Example: `ssh -i "RTS21-edu3.cer" ubuntu@ec2-100-27-0-67.compute-1.amazonaws.com`
   (Example can be copy and pasted from EC2-instances connect menu)
 - Accept the remote fingerprint by typing yes
 - Verify that you have obtained access to a shell on the remote system. You should see a somewhat lengthy "Welcome to Ubuntu" message.
