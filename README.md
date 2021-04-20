@@ -76,29 +76,28 @@ You should now:
 - Step 2: Select the instance type `m4.xlarge` and click on `Next: Configure Instance Detail`
 - Step 3: Do not change the defauls and click on `Next: Add Storage`
 - Step 4: Change the `Size (GiB)` from 10 to 20 GB and click on `Next: Add Tags`
-- Step 5: Click on `Add Tag` and Fill in `Name`in the Key field and a name of your new instances in the Value field
-          and click on `Next: Configure Security Group`
-- Step 6: Click on Add Rule
-          Select `http` for the Type field using the pull down menu
-          Click on Add Rule
-          Select `https` for the Type field using the pull down menu
-          Click on Add Rule
-          Type in `5901` in the field Port
-          Select `Anywhere` for the Source field using the pull down menu
-          Click on `Review and Launch`
-- Step 7: Review your configuration. Ignore the warnings regarding security groups and free usage tier
-          Click on `Launch`
+- Step 5: Click on `Add Tag` and Fill in `Name`in the Key field and a name of your new instances in the Value field and click on `Next: Configure Security Group`
+- Step 6: Configure firewall to allow inbound traffic to the ports we want to use
+	- Click on `Add Rule`
+	- Select `http` for the Type field using the pull down menu
+	- Click on `Add Rule`
+	- Select `https` for the Type field using the pull down menu
+	- Click on `Add Rule`
+	- Type in `5901` in the field Port
+	- Select `Anywhere` for the Source field using the pull down menu
+	- Click on `Review and Launch`
+- Step 7: Review your configuration. Ignore the warnings regarding security groups and free usage tier and click on `Launch`
 - Step 7  Alternative 1 (if you do not have a key pair):
-          In the popup window select `Create a new key pair`. Type in a name for your key-pair.
-          Click on `Downlaod Key Pair`
-          Click on `Launch instance`
-- Step 7  Alternative 2 (if you have already a key pair created and/or uploaded to your AWS-workspace):       
-          In the popup window select `Use existing key pair`
-          Select your key pair
-          Click on `Launch instance`
+	- In the popup window select `Create a new key pair`. Type in a name for your key-pair.
+	- Click on `Downlaod Key Pair`
+	- Click on `Launch instance`
+- Step 7  Alternative 2 (if you have already a key pair created and/or uploaded to your AWS-workspace):
+	- In the popup window select `Use existing key pair`
+	- Select your key pair
+	- Click on `Launch instance`
 
 - You will be directed to a page called `Launch Status` telling you that your instance is launching.
-  Click on View Instances
+  Click on `View Instances`
 - Click on the instance ID to show the instance in the instance view of the EC2 dashboard. 
   Click on the ID again to go to the instance details
   
