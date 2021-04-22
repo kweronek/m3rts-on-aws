@@ -5,7 +5,7 @@
 Elastic Compute Cloud (EC2) is a commercial service for hosting virtual machines, called instances, under the Amazon Web Services (AWS) label. This tutorial will get you started with an Ubuntu system on EC2 using AWS Educate.
 You should have received an invitation E-Mail for the service already. Click on the enclosed link and follow the instructions to create an account. In case the link does not work, in particular if your browser shows a TLS error, try the original link from the E-Mail in a different browser (this happened during testing). Please note that AWS considers this an application and approval can take a while. In my case it was about 15 minutes.
 
-To access EC2, log into [AWS Educate](https://www.awseducate.com/), click on my classrooms and go to the `Real-Time-Systems-SumSem21` classroom. This will take you to a third party site called Vocareum that gives you access to the AWS Console. Some popup blockers break this, so you may need to whitelist Vocareum there. On the AWS Console go to all services and click on EC2. Do not attempt to change the data center location. Selecting anything but the default (us-east-1/North Virginia) will appear to work at first but is not supported by AWS Educate and will lead to nothing but unclear error messages later.
+To access EC2, log into [AWS Educate](https://www.awseducate.com/), click on my classrooms and go to the `Real-Time-Systems-SumSem21` classroom. This will take you to a third party site called Vocareum that gives you access to the AWS Console. Some pop-up blockers break this, so you may need to white-list Vocareum there. On the AWS Console go to all services and click on EC2. Do not attempt to change the data center location. Selecting anything but the default (us-east-1/North Virginia) will appear to work at first but is not supported by AWS Educate and will lead to nothing but unclear error messages later.
 
 (For a quick start follow the ***)
 
@@ -19,7 +19,7 @@ To configure your AWS-educate account workspace proceed as follows:
 - Log in to [AWS Educate](https://www.awseducate.com/signin/SiteLogin)
 - Go to `My Classrooms`
 - On the `Real-Time-Systems-SumSem21` course, select `Go to Classroom` and click continue
-- You can now see your remaining credits and the reamaining time for this session
+- You can now see your remaining credits and the remaining time for this session
   (after the session has expired you can start a new one by a re-login)
 - Click on `ÀWS Console`
 - Under `Services` go to `EC2` to reach the EC2 dashboard
@@ -33,7 +33,7 @@ To access your virtual machine from command line we are going to use the [OpenSS
 Depending on your operating system you may need to install the software. On Linux and BSD based systems it is usually available via a package manager. The corresponding package is typically called `openssh` or `openssh-client`.
 
 #### SSH on Windows
-On recent versions of Windows (Windows 10 build 1809 and up) an OpenSSH port is available as an optional operating system feature. To install it, start `Settings` then go to `Apps > Apps and Features > Manage Optional Features`. Client and Server are separated. You can find a more detailed, german guide [here](https://www.heise.de/tipps-tricks/SSH-unter-Windows-10-nutzen-4224757.html).
+On recent versions of Windows (Windows 10 build 1809 and up) an OpenSSH port is available as an optional operating system feature. To install it, start `Settings` then go to `Apps > Apps and Features > Manage Optional Features`. Client and Server are separated. You can find a more detailed, German guide [here](https://www.heise.de/tipps-tricks/SSH-unter-Windows-10-nutzen-4224757.html).
 On Windows before Windows 10 you may use Putty as described [here](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-6-using-ssh/ssh-under-windows)
 
 #### Open SSH on MacOS
@@ -74,7 +74,7 @@ You should now:
 - Click on the orange button `Launch instance`
 - Step 1: Select the 64-bit x86 build of `Ubuntu Server 20.04 LTS (HVM)`
 - Step 2: Select the instance type `m4.xlarge` and click on `Next: Configure Instance Detail`
-- Step 3: Do not change the defauls and click on `Next: Add Storage`
+- Step 3: Do not change the defaults and click on `Next: Add Storage`
 - Step 4: Change the `Size (GiB)` from 10 to 20 GB and click on `Next: Add Tags`
 - Step 5: Click on `Add Tag` and Fill in `Name`in the Key field and a name of your new instances in the Value field and click on `Next: Configure Security Group`
 - Step 6: Configure firewall to allow inbound traffic to the ports we want to use
@@ -84,11 +84,11 @@ You should now:
 	- Click on `Review and Launch`
 - Step 7: Review your configuration. Ignore the warnings regarding security groups and free usage tier and click on `Launch`
 - Step 7  Alternative 1 (if you do not have a key pair):
-	- In the popup window select `Create a new key pair`. Type in a name for your key-pair.
-	- Click on `Downlaod Key Pair`
+	- In the pop-up window select `Create a new key pair`. Type in a name for your key-pair.
+	- Click on `Download Key Pair`
 	- Click on `Launch instance`
 - Step 7  Alternative 2 (if you have already a key pair created and/or uploaded to your AWS-workspace):
-	- In the popup window select `Use existing key pair`
+	- In the pop-up window select `Use existing key pair`
 	- Select your key pair
 	- Click on `Launch instance`
 
@@ -109,7 +109,7 @@ You should now:
 
 To connect to your VM you must first obtain its public IP address or public DNS name from the instance view on the EC2 dashboard.
 You can then use the command `ssh ubuntu@<IP or DNS>`to connect to your virtual machine. Additional arguments can be supplied before the destination.
-You will be prompted to accept the host keys from the remote host before the connection will be established. This is supposed to protect you from MITM-style attacks. Unfortunatly it is impossible to actually verify these without installing AWS software on your machine as described [here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connection-prereqs.html#connection-prereqs-fingerprint). Typing yes will add a new entry to your `known_hosts` file.
+You will be prompted to accept the host keys from the remote host before the connection will be established. This is supposed to protect you from MITM-style attacks. Unfortunately it is impossible to actually verify these without installing AWS software on your machine as described [here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connection-prereqs.html#connection-prereqs-fingerprint). Typing yes will add a new entry to your `known_hosts` file.
 If you deviated from the default private key path earlier you can will need to specify it now by adding the argument `-i /path/to/private/key`.
 
 You can also use ssh to forward network traffic to and from the remote host using an encrypted tunnel. This way you can access otherwise inaccessible ports, remote Unix file sockets and even traverse Source NATs on the clients end securely.
@@ -164,7 +164,7 @@ Using a direct connection (recommended)
 Using SSH port forwarding (optional alternative)
 - Install a VNC client (TigerVNC, Remmina etc.) on your local system.
 - Make sure your instance is up on the dashboard
-- Connect using ssh with port forwarding to 5901:localhost:5901. If you get an error message saying that ssh connot listen to port 5901 change the local port
+- Connect using ssh with port forwarding to 5901:localhost:5901. If you get an error message saying that ssh cannot listen to port 5901 change the local port
 - Optionally change your VNC password by running `vncpasswd` over ssh
 - Open your VNC client and connect to localhost:5901. If you had to change your local port, adjust it here as well
 
@@ -183,7 +183,7 @@ Direct connection
 Using SSH port forwarding
 - Install a VNC client (Remmina, FreeRDP etc.) on your local system or pick a preinstalled one
 - Make sure your instance is up on the dashboard
-- Connect using ssh with port forwarding to 3390:localhost:3389. If you get an error message saying that ssh connot listen to port 3390 change the local port
+- Connect using ssh with port forwarding to 3390:localhost:3389. If you get an error message saying that ssh cannot listen to port 3390 change the local port
 - Change the password of the user `ubuntu` by running `sudo passwd ubuntu` over ssh
 - Open your VNC client and connect to localhost:3390. If you had to change your local port, adjust it here as well
 
