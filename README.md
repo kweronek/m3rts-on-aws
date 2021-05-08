@@ -5,7 +5,7 @@
 Elastic Compute Cloud (EC2) is a commercial service for hosting virtual machines, called instances, under the Amazon Web Services (AWS) label. This tutorial will get you started with an Ubuntu system on EC2 using AWS Educate.
 You should have received an invitation E-Mail for the service already. Click on the enclosed link and follow the instructions to create an account. In case the link does not work, in particular if your browser shows a TLS error, try the original link from the E-Mail in a different browser (this happened during testing). Please note that AWS considers this an application and approval can take a while. In my case it was about 15 minutes.
 
-To access EC2, log into [AWS Educate](https://www.awseducate.com/), click on my classrooms and go to the `Real-Time-Systems-SumSem21` classroom. This will take you to a third party site called Vocareum that gives you access to the AWS Console. Some pop-up blockers break this, so you may need to white-list Vocareum there. On the AWS Console go to all services and click on EC2. Do not attempt to change the data center location. Selecting anything but the default (us-east-1/North Virginia) will appear to work at first but is not supported by AWS Educate and will lead to nothing but unclear error messages later.
+To access EC2, log into [AWS Educate](https://www.awseducate.com/), click on my classrooms and go to the `Real-Time-Systems ...` classroom. This will take you to a third party site called Vocareum that gives you access to the AWS Console. Some pop-up blockers break this, so you may need to white-list Vocareum there. On the AWS Console go to all services and click on EC2. Do not attempt to change the data center location. Selecting anything but the default (us-east-1/North Virginia) will appear to work at first but is not supported by AWS Educate and will lead to nothing but unclear error messages later.
 
 (For a quick start follow the ***)
 
@@ -73,7 +73,7 @@ You should now:
 - Log into AWS Educate and go to the EC2 dashboard
 - Click on the orange button `Launch instance`
 - Step 1: Select the 64-bit x86 build of `Ubuntu Server 20.04 LTS (HVM)`
-- Step 2: Select the instance type `m4.xlarge` and click on `Next: Configure Instance Detail`
+- Step 2: Select the instance type `c5.xlarge` and click on `Next: Configure Instance Detail`
 - Step 3: Do not change the defaults and click on `Next: Add Storage`
 - Step 4: Change the `Size (GiB)` from 10 to 20 GB and click on `Next: Add Tags`
 - Step 5: Click on `Add Tag` and Fill in `Name`in the Key field and a name of your new instances in the Value field and click on `Next: Configure Security Group`
