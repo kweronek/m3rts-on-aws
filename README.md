@@ -54,7 +54,7 @@ You should now:
 - Install the OpenSSH client on your local system
 - Open a terminal/command prompt window
 - Create a key pair by running `ssh-keygen -t rsa -b 4096`
-- Find your key pairs `.pub` file
+- Find your key pair's `.pub` file
 - Log into AWS Educate and go to the EC2 dashboard
 - Go to  `Network and Security > Key Pairs`
 - Import your public key by clicking on `Actions > Import key pair`
