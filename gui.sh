@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
 
 #VNCPASSWD=
+MAIN_USER=ubuntu
+
 apt update
 apt upgrade -y
 
@@ -28,20 +30,20 @@ apt install -y xrdp
 apt install -y tigervnc-standalone-server
 
 # Set password by install
-install --owner=ubuntu --group=ubuntu --mode=700 --directory /home/ubuntu/.vnc
-if [ -n "${VNCPASSWD:-}" ];
+install --owner="${MAIN_USER}" --group="${MAIN_USER}" --mode=700 --directory "/home/${MAIN_USER}/.vnc"
+if [ -n "${VNCPASSWD:-}" ]
 then
-	echo -n ${VNCPASSWD:-""} | vncpasswd -f > /home/ubuntu/.vnc/passwd
-	chown ubuntu:ubuntu /home/ubuntu/.vnc/passwd
-	chmod 600 /home/ubuntu/.vnc/passwd
+	echo -n ${VNCPASSWD:-""} | vncpasswd -f > "/home/${MAIN_USER}/.vnc/passwd"
+	chown "${MAIN_USER}:${MAIN_USER}" "/home/${MAIN_USER}/.vnc/passwd"
+	chmod 600 "/home/${MAIN_USER}/.vnc/passwd"
 else
-	if [ -f ./vncpasswd]
+	if [ -f ./vncpasswd ]
 	then
-		install --owner=ubuntu --group=ubuntu --mode=600 ./vncpasswd /home/ubuntu/.vnc/passwd
+		install --owner="${MAIN_USER}" --group="${MAIN_USER}" --mode=600 ./vncpasswd "/home/${MAIN_USER}/.vnc/passwd"
 	else
 		echo "Could not set VNC password automatically"
 		echo "Please enter one now"
-		sudo -u ubuntu vncpasswd
+		sudo -u "${MAIN_USER}" vncpasswd
 	fi
 fi
 
@@ -56,25 +58,27 @@ systemctl enable vncserver.service
 systemctl start vncserver.service
 
 # install Libre-Office 7
-snap install libreoffice 
+snap install libreoffice
 
 # Zoom-Client
-cd ~/Downloads
+pushd ~/Downloads
 wget https://zoom.us/client/latest/zoom_amd64.deb
 apt install -y ./zoom_amd64.deb
-cd ~
+rm ./zoom_amd64.deb
+popd
 
 # install Chrome
-cd ~/Downloads
+pushd ~/Downloads
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 dpkg -i google-chrome-stable_current_amd64.deb
-cd ~
+rm google-chrome-stable_current_amd64.deb
+popd
 
 # ensure that arrows work in vi
-echo "set nocompatible" > /home/ubuntu/.vimrc
+echo "set nocompatible" > "/home/${MAIN_USER}/.vimrc"
 
 # add . to PATH
 # works only for user ubuntu
 # will be active after next login
-echo "export PATH=$PATH:." >> /home/ubuntu/.profile
+echo "export PATH=$PATH:." >> "/home/${MAIN_USER}/.profile"
 
