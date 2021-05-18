@@ -74,5 +74,7 @@ cd ~
 echo "set nocompatible" > /home/ubuntu/.vimrc
 
 # add . to PATH
+# works only for user ubuntu
+# will be active after next login
 echo "export PATH=$PATH:." >> /home/ubuntu/.profile
-source /home/ubuntu/.profile
+
