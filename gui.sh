@@ -38,9 +38,6 @@ echo "export PATH=$PATH:." >> "/home/${MAIN_USER}/.profile"
 # Install KDE desktop via metapackage
 apt install -y kubuntu-desktop
 
-## to use kate/vnc instead of vi/ssh
-snap install kate
-
 # install Libre-Office 7
 snap install libreoffice
 
