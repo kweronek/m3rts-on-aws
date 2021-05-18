@@ -1,7 +1,13 @@
 #!/usr/bin/env sh
 
+
+### CONFIGURATION ###
+
 #VNCPASSWD=
 MAIN_USER=ubuntu
+
+
+### BASE SYSTEM ###
 
 apt update
 apt upgrade -y
@@ -14,14 +20,46 @@ apt install -y gcc
 # Install other tools
 snap install tree
 snap install htop
-## to use kate/vnc instead of vi/ssh
-snap install kate
 
 # Set timezone
 timedatectl set-timezone Europe/Berlin
 
+# ensure that arrows work in vi
+echo "set nocompatible" > "/home/${MAIN_USER}/.vimrc"
+
+# add . to PATH
+# works only for user ubuntu
+# will be active after next login
+echo "export PATH=$PATH:." >> "/home/${MAIN_USER}/.profile"
+
+
+### DESKTOP ENVIRONMENT ###
+
 # Install KDE desktop via metapackage
 apt install -y kubuntu-desktop
+
+## to use kate/vnc instead of vi/ssh
+snap install kate
+
+# install Libre-Office 7
+snap install libreoffice
+
+# Zoom-Client
+pushd ~/Downloads
+wget https://zoom.us/client/latest/zoom_amd64.deb
+apt install -y ./zoom_amd64.deb
+rm ./zoom_amd64.deb
+popd
+
+# install Chrome
+pushd ~/Downloads
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+dpkg -i google-chrome-stable_current_amd64.deb
+rm google-chrome-stable_current_amd64.deb
+popd
+
+
+### VNC/RDP ###
 
 # Install RDP server (xrdp)
 apt install -y xrdp
@@ -56,29 +94,3 @@ systemctl daemon-reload
 systemctl enable vncserver.service
 # Start vnc server now
 systemctl start vncserver.service
-
-# install Libre-Office 7
-snap install libreoffice
-
-# Zoom-Client
-pushd ~/Downloads
-wget https://zoom.us/client/latest/zoom_amd64.deb
-apt install -y ./zoom_amd64.deb
-rm ./zoom_amd64.deb
-popd
-
-# install Chrome
-pushd ~/Downloads
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-dpkg -i google-chrome-stable_current_amd64.deb
-rm google-chrome-stable_current_amd64.deb
-popd
-
-# ensure that arrows work in vi
-echo "set nocompatible" > "/home/${MAIN_USER}/.vimrc"
-
-# add . to PATH
-# works only for user ubuntu
-# will be active after next login
-echo "export PATH=$PATH:." >> "/home/${MAIN_USER}/.profile"
-
