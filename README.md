@@ -18,7 +18,7 @@ To configure your AWS-educate account workspace proceed as follows:
 - Proceed with the local part of the OpenSSH section while waiting for confirmation
 - Log in to [AWS Educate](https://www.awseducate.com/signin/SiteLogin)
 - Go to `My Classrooms`
-- On the `Real-Time-Systems-SumSem21` course, select `Go to Classroom` and click continue
+- On the `Real-Time-Systems-...` course, select `Go to Classroom` and click continue
 - You can now see your remaining credits and the remaining time for this session
   (after the session has expired you can start a new one by a re-login)
 - Click on `ÀWS Console`
@@ -75,7 +75,7 @@ You should now:
 - Step 1: Select the 64-bit x86 build of `Ubuntu Server 20.04 LTS (HVM)`
 - Step 2: Select the instance type `c5.xlarge` and click on `Next: Configure Instance Detail`
 - Step 3: Do not change the defaults and click on `Next: Add Storage`
-- Step 4: Change the `Size (GiB)` from 10 to 20 GB and click on `Next: Add Tags`
+- Step 4: Change the `Size (GiB)` from 8 to 20 GB and click on `Next: Add Tags`
 - Step 5: Click on `Add Tag` and Fill in `Name`in the Key field and a name of your new instances in the Value field and click on `Next: Configure Security Group`
 - Step 6: Configure firewall to allow inbound traffic to the ports we want to use
 	- Click on `Add Rule`
