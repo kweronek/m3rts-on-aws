@@ -10,10 +10,10 @@ apt install -y build-essential
 apt install -y gcc
 
 # Install other tools
-sudo snap install tree
-sudo snap install htop
+snap install tree
+snap install htop
 ## to use kate/vnc instead of vi/ssh
-sudo snap install kate
+snap install kate
 
 # Set timezone
 timedatectl set-timezone Europe/Berlin
@@ -56,22 +56,23 @@ systemctl enable vncserver.service
 systemctl start vncserver.service
 
 # install Libre-Office 7
-sudo snap install libreoffice 
+snap install libreoffice 
 
 # Zoom-Client
 cd ~/Downloads
 wget https://zoom.us/client/latest/zoom_amd64.deb
-sudo apt install -y ./zoom_amd64.deb
+apt install -y ./zoom_amd64.deb
 cd ~
 
 # install Chrome
 cd ~/Downloads
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo dpkg -i google-chrome-stable_current_amd64.deb
+dpkg -i google-chrome-stable_current_amd64.deb
 cd ~
 
 # ensure that arrows work in vi
-echo "set nocompatible" > $HOME/.vimrc
+echo "set nocompatible" > /home/ubuntu/.vimrc
+
 # add . to PATH
-echo "export PATH=$PATH:." >> $HOME/.profile
-source $HOME/.profile
+echo "export PATH=$PATH:." >> /home/ubuntu/.profile
+source /home/ubuntu/.profile
