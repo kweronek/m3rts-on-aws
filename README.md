@@ -176,7 +176,7 @@ You should now pick a method and connect to your machine:
 
 Direct connection
 - Install a VNC client (Remmina, FreeRDP etc.) on your local system or pick a preinstalled one
-- Open port 5901 in the security group of your instance
+- Open port 3389 in the security group of your instance
 - Connect to your instance using ssh and change the password of the user `ubuntu` by running `sudo passwd ubuntu`
 - Open your VNC client and connect to <IP or DNS>:3389
 
